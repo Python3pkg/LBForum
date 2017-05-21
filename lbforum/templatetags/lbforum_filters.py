@@ -32,13 +32,13 @@ def form_all_error(form):
     global_error = form.errors.get('__all__', '')
     if global_error:
         global_error = global_error.as_text()
-    for name, field in form.fields.items():
+    for name, field in list(form.fields.items()):
         e = form.errors.get(name, '')
         if e:
             errors.append((field.label, force_text(e), ))
     return mark_safe(
-        u'<ul class="errorlist">%s %s</ul>' % (
-            global_error, ''.join([u'<li>%s%s</li>' % (k, v) for k, v in errors])))
+        '<ul class="errorlist">%s %s</ul>' % (
+            global_error, ''.join(['<li>%s%s</li>' % (k, v) for k, v in errors])))
 
 
 @register.filter

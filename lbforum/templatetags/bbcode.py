@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from __future__ import unicode_literals
+
 
 import re
 
@@ -97,9 +97,9 @@ class AttachImgTag(TagBase):
         try:
             attach = LBAttachment.objects.get(pk=contents)
         except:
-            return u'[attachimg]%s[/attachimg]' % contents
+            return '[attachimg]%s[/attachimg]' % contents
         url = "%s?pk=%s" % (reverse('lbattachment_download'), attach.pk)
-        return u'<img title="%s" src="%s"/>' % (
+        return '<img title="%s" src="%s"/>' % (
             attach.description,
             url)
 

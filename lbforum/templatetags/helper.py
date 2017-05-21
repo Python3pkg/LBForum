@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from __future__ import unicode_literals
+
 
 from django.conf import settings
 from django.utils.safestring import mark_safe
@@ -43,7 +43,7 @@ def clean_html(fragment):
                     tag.extract()
                 else:
                     keys_to_del = []
-                    for attr in tag.attrs.keys():
+                    for attr in list(tag.attrs.keys()):
                         if attr not in acceptable_attributes:
                             keys_to_del.append(attr)
                     for key in keys_to_del:

@@ -33,7 +33,7 @@ def forum_url(forum, topic_type, topic_type2):
 @register.simple_tag
 def show_attach(attach, post, has_replied, hide_attachs):
     if not has_replied and post.topic_post and \
-            (post.topic.need_reply_attachments or hide_attachs.count(u"%s" % attach.pk)):
+            (post.topic.need_reply_attachments or hide_attachs.count("%s" % attach.pk)):
         html = """<a href="#" onclick="alert('%s');return false;">%s</a>""" % \
             (_("reply to see the attachments"), attach.filename)
     else:
